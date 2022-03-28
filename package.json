@@ -1,11 +1,11 @@
 {
-  "name": "model-transformer",
+  "name": "versioned.js",
   "version": "1.0.0",
-  "description": "Transform models between schema versions",
+  "description": "Transform data between versions",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/Stumblinbear/model-transformer",
+  "repository": "https://github.com/Stumblinbear/versioned.js",
   "license": "MIT",
   "keywords": [],
   "scripts": {
