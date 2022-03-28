@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Constructor } from "./types"
 
+export type TransformResult<M> = M | null
+
 export interface Transformer<K extends string, P, M, N> {
   version: K
   model: Constructor<M> | M
@@ -19,7 +21,7 @@ export interface Transformer<K extends string, P, M, N> {
    * @param model the model to upgrade
    * @returns the upgraded model
    */
-  upgrade(model: M): N | null
+  upgrade(model: M): TransformResult<N>
 
   /**
    * Takes in the model and returns the previous version of the model, null if unsupported.
@@ -27,7 +29,7 @@ export interface Transformer<K extends string, P, M, N> {
    * @param model the model to downgrade
    * @returns the downgraded model
    */
-  downgrade(model: M): P | null
+  downgrade(model: M): TransformResult<P>
 }
 
 export function Transformer<K extends string, P, M, N>(
@@ -40,11 +42,11 @@ export function Transformer<K extends string, P, M, N>(
     version: K = version
     model: Constructor<M> | M = current
 
-    upgrade(_: M): N | null {
+    upgrade(_: M): TransformResult<N> {
       return null
     }
 
-    downgrade(_: M): P | null {
+    downgrade(_: M): TransformResult<P> {
       return null
     }
   }
